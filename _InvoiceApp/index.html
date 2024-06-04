@@ -11,11 +11,55 @@
     />
   </head>
   <body>
-    <main class="max-w-[1000px] mx-auto py-5 border px-5 lg:px-0 h-screen flex flex-col">
-      <header>
+    <main class="max-w-[1000px] mx-auto py-16 px-5 lg:px-0 h-screen flex flex-col">
+      <header class="mb-10">
         <h1 class="font-bold text-3xl">Kaung Sike 3th JavaScript Revision</h1>
         <p class="text-stone-400">Invoice App</p>
       </header>
+      <section id="createFormSection" class="mb-5">
+        <form action="#" class="">
+            <div class="flex w-full justify-between border border-stone-600 rounded-lg gap-3 p-5">
+                <div class="basis-4/12">
+                    <select class="select w-full">
+                        <option>Select Product</option>
+                        <option value="apple">Apple</option>
+                        <option value="orange">Orange</option>
+                        <option value="mango">Mango</option>
+                        <option value="banana">Banana</option>
+                    </select>
+                </div>
+                <input id="inputQuantity" type="number" class="input input-solid basis-4/12" placeholder="Quantity" />
+                <button id="buyBtn" class="btn btn-solid-primary basis-4/12">Buy</button>
+            </div>
+        </form>
+      </section>
+      <div class="flex w-full overflow-x-auto">
+        <table class="table-hover table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <td>Cy Ganderton</td>
+                    <td class="text-end">Quality Control Specialist</td>
+                    <td class="text-end">1</td>
+                    <td class="text-end">200</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <footer class="flex justify-end mt-auto gap-3">
+        <button class="btn">Manage Inventory</button>
+        <button class="btn btn-solid-primary">Print</button>
+    </footer>
 
     </main>
 
