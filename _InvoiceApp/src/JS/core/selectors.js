@@ -1,0 +1,1 @@
+export const productSelect = document.querySelector("#productSelect")
