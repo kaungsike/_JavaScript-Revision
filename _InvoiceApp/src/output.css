@@ -1657,6 +1657,10 @@ html{
   margin-bottom: 1.25rem;
 }
 
+.ml-10{
+  margin-left: 2.5rem;
+}
+
 .mt-auto{
   margin-top: auto;
 }
@@ -1676,6 +1680,10 @@ html{
 .size-5{
   width: 1.25rem;
   height: 1.25rem;
+}
+
+.h-\[52px\]{
+  height: 52px;
 }
 
 .h-screen{
@@ -1726,9 +1734,18 @@ html{
   border-width: 1px;
 }
 
+.border-b{
+  border-bottom-width: 1px;
+}
+
 .border-stone-600{
   --tw-border-opacity: 1;
   border-color: rgb(87 83 78 / var(--tw-border-opacity));
+}
+
+.border-b-stone-600{
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(87 83 78 / var(--tw-border-opacity));
 }
 
 .p-5{
@@ -1743,6 +1760,10 @@ html{
 .py-16{
   padding-top: 4rem;
   padding-bottom: 4rem;
+}
+
+.text-start{
+  text-align: start;
 }
 
 .text-end{
@@ -1765,6 +1786,15 @@ html{
 
 .duration-200{
   transition-duration: 200ms;
+}
+
+body {
+  counter-reset: number;
+}
+
+.id::before {
+  counter-increment: number;
+  content: counter(number);
 }
 
 .last\:table-row:last-child{

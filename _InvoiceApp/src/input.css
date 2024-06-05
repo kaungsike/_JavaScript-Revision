@@ -3,3 +3,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    counter-reset: number;
+  }
+  
+.id::before {
+    counter-increment: number;
+    content: counter(number);
+  }
