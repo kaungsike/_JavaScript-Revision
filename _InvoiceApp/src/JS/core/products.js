@@ -1,15 +1,15 @@
 import { productSelect } from "./selectors.js";
 
-export const createProducts = (product) => {
-    const option = document.createElement("option");
-    option.innerText = product.name;
-    option.value = product.id;
+// export const createProducts = (product) => {
+//     const option = document.createElement("option");
+//     option.innerText = product.name;
+//     option.value = product.id;
 
-    return option;
-}
+//     return option;
+// }
 
 export const productRender = (products) => {
     products.forEach((product) => {
-        productSelect.append(createProducts(product))
+        productSelect.append(new Option(product.name,product.id))
     })
 }
