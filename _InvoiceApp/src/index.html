@@ -97,7 +97,7 @@
               </td>
             </tr> -->
           </tbody>
-          <tfoot class="h-[52px]">
+          <tfoot class="h-[52px] sticky">
             <tr class="last:table-row hidden border-b border-b-stone-600">
               <td colspan="4">
                 <p class="w-full flex justify-center">Total Cost</p>
@@ -110,11 +110,42 @@
           </tfoot>
         </table>
       </div>
+
       <footer class="flex justify-end mt-auto gap-3">
-        <button id="manageInventoryBtn" class="btn">Manage Inventory</button>
+        <input type="checkbox" id="drawer-overlay" class="drawer-toggle" />
+
+        <label id="manageInventoryBtn" for="drawer-overlay" class="btn btn-primary">Manage Inventory</label>
+        <label class="overlay"></label>
+        <div class="drawer flex flex-col items-center pb-5">
+          <div class="drawer-content">
+            <label
+              for="drawer-overlay"
+              class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+              >✕</label
+            >
+            <p>Product Inventory</p>
+          </div>
+          <div class="w-[95%] flex-grow mx-auto" id="productGroup">
+            <div class="product border border-stone-500 w-full h-[60px] rounded-md flex items-center justify-between px-3">
+              <p class="product-name">Apple</p>
+              <p>$ <span class="product-price">400</span></p>
+            </div>
+          </div>
+          <div id="inputGroup" class=" w-[95%]">
+            <form action="#">
+              <div class="flex items-center gap-2 justify-between">
+                <input class="input input-solid" placeholder="Product Name" />
+                <input class="input input-solid" type="number" placeholder="Price" />
+              </div>
+              <button type="submit" class="btn btn-solid-primary w-full mt-2">Add</button>
+            </form>
+          </div>
+        </div>
         <button id="printBtn" class="btn btn-solid-primary">Print</button>
       </footer>
     </main>
+
+
 
     <template id="rowTemplate">
       <tr class="rowRecord">
@@ -122,7 +153,9 @@
         <td class="name">Cy Ganderton</td>
         <td class="text-end">$ <span class="price"></span></td>
         <td class="text-end h-[58px] w-[230px] flex items-center">
-          <button class="reduceQuantity border border-stone-500 w-[15px] h-[15px] rounded-full flex items-center justify-center active:scale-75 duration-200">
+          <button
+            class="reduceQuantity border border-stone-500 w-[15px] h-[15px] rounded-full flex items-center justify-center active:scale-75 duration-200"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -139,7 +172,9 @@
             </svg>
           </button>
           <span class="quantity text-end ml-6 mr-1"></span>
-          <button class="addQuantity border border-stone-500 w-[15px] h-[15px] rounded-full flex items-center justify-center active:scale-75 duration-200">
+          <button
+            class="addQuantity border border-stone-500 w-[15px] h-[15px] rounded-full flex items-center justify-center active:scale-75 duration-200"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
