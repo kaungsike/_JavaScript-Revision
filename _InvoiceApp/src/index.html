@@ -14,12 +14,11 @@
     <main
       class="max-w-[1000px] mx-auto py-16 px-5 lg:px-0 h-screen flex flex-col"
     >
-      <a href="./sangyidr.html">San GYi Dr Pr</a>
       <header class="mb-10">
         <h1 class="font-bold text-3xl">Kaung Sike 3th JavaScript Revision</h1>
         <p class="text-stone-400">Invoice App</p>
       </header>
-      <section id="createFormSection" class="mb-5">
+      <section id="createFormSection" class="mb-5 print:hidden ">
         <form action="#" class="" id="createForm">
           <div
             class="flex w-full justify-between border border-stone-600 rounded-lg gap-3 p-5"
@@ -83,13 +82,14 @@
               <td></td>
             </tr>
           </tfoot>
+          
         </table>
       </div>
 
       <footer class="flex justify-end mt-auto gap-3">
         <input type="checkbox" id="drawer-overlay" class="drawer-toggle" />
 
-        <label id="manageInventoryBtn" for="drawer-overlay" class="btn btn-primary">Manage Inventory</label>
+        <label id="manageInventoryBtn" for="drawer-overlay" class="btn btn-primary print:hidden">Manage Inventory</label>
         <label class="overlay"></label>
         <div class="drawer flex flex-col items-center pb-5">
           <div class="drawer-content mb-4">
@@ -103,16 +103,16 @@
           <div class="w-[95%] flex-grow mx-auto" id="productGroup">
           </div>
           <div id="inputGroup" class=" w-[95%]">
-            <form action="#">
+            <form action="#" id="createProductForm">
               <div class="flex items-center gap-2 justify-between">
-                <input class="input input-solid" placeholder="Product Name" />
-                <input class="input input-solid" type="number" placeholder="Price" />
+                <input class="input input-solid" name="inputName" placeholder="Product Name" />
+                <input class="input input-solid" name="inputPrice" type="number" placeholder="Price" />
               </div>
-              <button type="submit" class="btn btn-solid-primary w-full mt-2">Add</button>
+              <button type="submit" class="btn btn-solid-primary w-full mt-2 print:hidden">Add</button>
             </form>
           </div>
         </div>
-        <button id="printBtn" class="btn btn-solid-primary">Print</button>
+        <button id="printBtn" class="btn btn-solid-primary print:hidden">Print</button>
       </footer>
     </main>
 
@@ -125,7 +125,7 @@
         <td class="text-end">$ <span class="price"></span></td>
         <td class="text-end h-[58px] w-[230px] flex items-center">
           <button
-            class="reduceQuantity border border-stone-500 w-[15px] h-[15px] rounded-full flex items-center justify-center active:scale-75 duration-200"
+            class="reduceQuantity print:hidden border border-stone-500 w-[15px] h-[15px] rounded-full flex items-center justify-center active:scale-75 duration-200"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +144,7 @@
           </button>
           <span class="quantity text-end ml-6 mr-1"></span>
           <button
-            class="addQuantity border border-stone-500 w-[15px] h-[15px] rounded-full flex items-center justify-center active:scale-75 duration-200"
+            class="addQuantity  print:hidden border border-stone-500 w-[15px] h-[15px] rounded-full flex items-center justify-center active:scale-75 duration-200"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -164,7 +164,7 @@
         </td>
         <td class="text-center">$ <span class="cost"></span></td>
         <td class="w-[60px]">
-          <button class="delBtn active:scale-90 duration-200">
+          <button class="delBtn active:scale-90 duration-200 print:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -185,7 +185,7 @@
     </template>
 
     <template id="productTemplate">
-      <div class="product mb-2 border border-stone-500 w-full h-[60px] rounded-md flex items-center justify-between px-3 hover:scale-105 duration-200">
+      <div class="product cursor-pointer mb-2 border border-stone-500 w-full h-[60px] rounded-md flex items-center justify-between px-3 hover:scale-105 duration-200">
         <p class="product-name">Apple</p>
         <p>$ <span class="product-price">400</span></p>
       </div>

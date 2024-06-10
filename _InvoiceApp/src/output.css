@@ -1895,6 +1895,14 @@ html:has(.drawer-toggle:checked){
   margin-bottom: 2.5rem;
 }
 
+.mb-2{
+  margin-bottom: 0.5rem;
+}
+
+.mb-4{
+  margin-bottom: 1rem;
+}
+
 .mb-5{
   margin-bottom: 1.25rem;
 }
@@ -1913,18 +1921,6 @@ html:has(.drawer-toggle:checked){
 
 .mt-auto{
   margin-top: auto;
-}
-
-.mb-3{
-  margin-bottom: 0.75rem;
-}
-
-.mb-2{
-  margin-bottom: 0.5rem;
-}
-
-.mb-4{
-  margin-bottom: 1rem;
 }
 
 .flex{
@@ -2003,6 +1999,10 @@ html:has(.drawer-toggle:checked){
 
 .basis-4\/12{
   flex-basis: 33.333333%;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
 
 .flex-col{
@@ -2172,5 +2172,11 @@ body {
   .lg\:px-0{
     padding-left: 0px;
     padding-right: 0px;
+  }
+}
+
+@media print{
+  .print\:hidden{
+    display: none;
   }
 }

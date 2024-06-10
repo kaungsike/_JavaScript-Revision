@@ -1,9 +1,11 @@
-import { createFormHandler, rowGroupHandler } from "./handlers.js";
-import { createForm, rowGroup } from "./selectors.js";
+import { createFormHandler, createProductFormHandler, printHandler, rowGroupHandler } from "./handlers.js";
+import { createForm, createProductForm, printBtn, rowGroup } from "./selectors.js";
 
 const listener = () => {
     createForm.addEventListener("submit",createFormHandler);
-    rowGroup.addEventListener("click",rowGroupHandler)
+    rowGroup.addEventListener("click",rowGroupHandler);
+    createProductForm.addEventListener("submit",createProductFormHandler);
+    printBtn.addEventListener("click",printHandler)
 }
 
 export default listener;

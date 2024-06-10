@@ -1,6 +1,7 @@
 import { productGroup, productSelect, productTemplate } from "./selectors.js";
 
 export const productRender = (products) => {
+    productSelect.innerHTML = ``;
     products.forEach((product) => {
         productSelect.append(new Option(product.name,product.id))
     })
@@ -15,6 +16,7 @@ export const createProduct = (product) => {
 }
 
 export const createProductRender = (products) => {
+    productGroup.innerHTML = ``;
     products.forEach((product) => {
         productGroup.append(createProduct(product))
     })

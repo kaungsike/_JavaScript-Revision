@@ -23,8 +23,8 @@ export const deleteRecord = (e) => {
     
 }
 
-export const addReduceRecordQuantity = (e,number) => {
-    const row = e.target.closest(".rowRecord");
+export const updateRecord = (productId,number) => {
+    const row = document.querySelector(`[number='${productId}']`)
     const price = row.querySelector(".price").innerText;
     const currentCost = row.querySelector(".cost");
     const quantity = row.querySelector(".quantity");
