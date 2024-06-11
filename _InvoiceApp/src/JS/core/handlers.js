@@ -31,7 +31,7 @@ export const createFormHandler = (e) => {
 
     createForm.reset();
 
-    updateTotalCost()
+    // updateTotalCost()
 
 }
 
@@ -39,6 +39,9 @@ export const createFormHandler = (e) => {
 export const rowGroupHandler = (e) => {
     if(e.target.classList.contains("delBtn")){
         const row = e.target.closest(".rowRecord");
+        if(confirm("Are you sure to delete?")){
+            row.remove()
+        }
     }
     else if(e.target.classList.contains("addQuantity")){
         updateRecord(e.target.closest(".rowRecord").getAttribute("number"),1)
