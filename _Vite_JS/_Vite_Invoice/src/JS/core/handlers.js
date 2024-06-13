@@ -1,8 +1,9 @@
 import { updateTotalCost } from "./functions.js";
 import { createProductRender, productRender } from "./products.js";
-import { createRecord, deleteRecord, updateRecord } from "./records.js";
+import { createRecord, updateRecord } from "./records.js";
 import { createForm, createProductForm, rowGroup } from "./selectors.js";
 import { products } from "./variables.js";
+import Swal from "sweetalert2";
 
 export const createFormHandler = (e) => {
     e.preventDefault();
@@ -39,10 +40,35 @@ export const createFormHandler = (e) => {
 export const rowGroupHandler = (e) => {
     if(e.target.classList.contains("delBtn")){
         const row = e.target.closest(".rowRecord");
-        if(confirm("Are you sure to delete?")){
-            row.remove()
+        Swal.fire({
+            title: "Are you sure?",
+            text: "",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#0072f5",
+            // cancelButtonColor: "#e8e8e8",
+            confirmButtonText: "Conform"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                row.remove()
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.onmouseenter = Swal.stopTimer;
+                      toast.onmouseleave = Swal.resumeTimer;
+                    }
+                  });
+                  Toast.fire({
+                    icon: "success",
+                    title: "Deleted row successfully"
+                  });
+            }
+          });
         }
-    }
     else if(e.target.classList.contains("addQuantity")){
         updateRecord(e.target.closest(".rowRecord").getAttribute("number"),1)
     }

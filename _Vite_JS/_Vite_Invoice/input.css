@@ -12,3 +12,7 @@ body {
     counter-increment: number;
     content: counter(number);
   }
+
+  /* .swal2-confirm{
+    @apply  btn-solid-primary btn !important;
+  } */

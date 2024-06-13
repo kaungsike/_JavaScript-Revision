@@ -1,5 +1,6 @@
 import { updateTotalCost } from "./functions.js";
 import { rowGroup, rowTemplate } from "./selectors.js";
+import Swal from "sweetalert2";
 
 export const createRecord = (product, quantity) => {
   const template = rowTemplate.content.cloneNode(true);
@@ -13,13 +14,31 @@ export const createRecord = (product, quantity) => {
   return template;
 };
 
-export const deleteRecord = (e) => {
-  const row = e.target.closest(".rowRecord");
-  if (confirm("Are you sure to delete?")) {
-    row.remove();
-    // updateTotalCost()
-  }
-};
+// export const deleteRecord = (e) => {
+//   const row = e.target.closest(".rowRecord");
+//   // if (confirm("Are you sure to delete?")) {
+//   //   row.remove();
+//   //   // updateTotalCost()
+//   // }
+//   Swal.fire({
+//     title: "Are you sure?",
+//     text: "You won't be able to revert this!",
+//     icon: "warning",
+//     showCancelButton: true,
+//     confirmButtonColor: "#0072f5",
+//     // cancelButtonColor: "#e8e8e8",
+//     confirmButtonText: "Conform"
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       Swal.fire({
+//         title: "Deleted!",
+//         text: "Your file has been deleted.",
+//         icon: "success",
+//         confirmButtonColor: "#0072f5",
+//       });
+//     }
+//   });
+// };
 
 export const updateRecord = (productId, number) => {
   const row = document.querySelector(`[number='${productId}']`);
