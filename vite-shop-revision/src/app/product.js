@@ -1,6 +1,6 @@
 import { products } from "../core/data";
-import { cartItemGroup, productGroup, productStarGroup, productTemplate, starTemplate } from "../core/selectors"
-import { createCartItem } from "./cart";
+import { cartItemGroup, productGroup, productTemplate } from "../core/selectors"
+import { countCartItem, createCartItem, updateCartItemCount, updateTotalCost } from "./cart";
 
 export const createProduct = (product) => {
     const template = productTemplate.content.cloneNode(true);
@@ -51,5 +51,8 @@ export const handleProductGroup = (e) => {
         const productInfo = products.find((product) => product.id===currentProductId);
 
         cartItemGroup.append(createCartItem(productInfo,1));
+
+        updateCartItemCount();
+        updateTotalCost();
      }
 }

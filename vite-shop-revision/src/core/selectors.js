@@ -13,3 +13,8 @@ export const categoryGroup = document.querySelector("#category-group");
 export const productGroup = document.querySelector("#product-group");
 export const cartItemGroup = document.querySelector("#cartItemGroup");
 export const productStarGroup = document.querySelector("#product-star");
+
+
+// other
+export const cartItemCount = document.querySelector("#cartItemCount");
+export const cartTotal = document.querySelector("#cartTotal");

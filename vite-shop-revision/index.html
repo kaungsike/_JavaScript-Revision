@@ -40,7 +40,7 @@
                 aria-controls="docs-sidebar"
                 aria-label="Toggle navigation"
                 type="button"
-                class="flex w-[45px] h-[45px] justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 text-gray-500 hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-blue-500 dark:hover:border-blue-600"
+                class="relative flex w-[45px] h-[45px] justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 text-gray-500 hover:border-blue-600 hover:text-blue-600 disabled:opacity-50 disabled:pointer-events-none dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-blue-500 dark:hover:border-blue-600"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -56,6 +56,11 @@
                     d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
                   />
                 </svg>
+                <p
+                  class="absolute bg-red-500 text-white w-6 h-6 flex items-center justify-center rounded-full text-sm -top-2 -right-2"
+                >
+                  <span class="text-xs" id="cartItemCount">0</span>
+                </p>
               </button>
             </div>
           </div>
@@ -68,19 +73,35 @@
           id="docs-sidebar"
           class="hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform hidden fixed top-0 start-0 bottom-0 z-[60] w-72 bg-white border-e border-gray-200 p-3 pb-10 overflow-y-auto lg:block lg:-translate-x-ful lg:end-auto lg:bottom-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-white dark:[&::-webkit-scrollbar-thumb]:bg-white dark:bg-white xl:-translate-x-full 2xl:-translate-x-full dark:border-white"
         >
-          <header class="mb-5">
-            <a
-              class="flex-none text-xl font-semibold dark:text-gray-600"
-              href="#"
-              aria-label="Brand"
-              >Products</a
-            >
-          </header>
-          <body>
-            <div id="cartItemGroup" class="flex flex-col gap-3">
-
-            </div>
-          </body>
+          <div class="flex flex-col h-full">
+            <header class="mb-5">
+              <a
+                class="flex-none text-xl font-semibold dark:text-gray-600"
+                href="#"
+                aria-label="Brand"
+                >Products</a
+              >
+            </header>
+            <div
+              id="cartItemGroup"
+              class="flex flex-col gap-3 flex-grow h-[300px] overflow-y-scroll"
+            ></div>
+            <footer class="mt-auto">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <p class="font-bold text-sm">Total</p>
+                  <p class="font-bold text-sm">
+                    $ <span id="cartTotal">0.00</span>
+                  </p>
+                </div>
+                <button
+                  class="w-full rounded bg-gray-600 text-white h-[40px] border border-gray-600"
+                >
+                  Order
+                </button>
+              </div>
+            </footer>
+          </div>
         </div>
       </section>
       <!-- End Sidebar -->
@@ -90,20 +111,20 @@
           <h4 class="mb-2">Product Categorys</h4>
           <div class="flex gap-2 overflow-x-scroll" id="category-group">
             <button
-            class="category-btn border text-nowrap border-gray-600 bg-gray-600 text-white px-5 rounded py-1"
-          >All</button>
+              class="category-btn border text-nowrap border-gray-600 bg-gray-600 text-white px-5 rounded py-1"
+            >
+              All
+            </button>
           </div>
         </div>
       </section>
 
       <section id="product-section" class="mb-5">
         <div class="container mx-auto">
-          <div id="product-group"
+          <div
+            id="product-group"
             class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-cols-1 xl:grid-cols-4 xl:gap-8 lg:gap-6 md:gap-6 sm:gap-2 gap-2"
-          >
-
-
-          </div>
+          ></div>
         </div>
       </section>
 
@@ -147,29 +168,15 @@
 
     <template id="productTemplate">
       <div class="product-card col-span-1">
-        <img
-          class="product-img h-[100px] ml-5 -mb-[35px]"
-          src=""
-          alt=""
-        />
-        <div
-          class="product-imfo w-full border border-gray-600 rounded p-5"
-        >
-          <p class="product-title mb-3 font-bold mt-[30px] line-clamp-1">
-            
-          </p>
-          <p class="product-description text-sm mb-4 line-clamp-2">
-            
-          </p>
+        <img class="product-img h-[100px] ml-5 -mb-[35px]" src="" alt="" />
+        <div class="product-imfo w-full border border-gray-600 rounded p-5">
+          <p class="product-title mb-3 font-bold mt-[30px] line-clamp-1"></p>
+          <p class="product-description text-sm mb-4 line-clamp-2"></p>
           <div class="flex justify-between items-center mb-3">
-            <div id="product-star" class="product-star flex gap-1">
-
-            </div>
+            <div id="product-star" class="product-star flex gap-1"></div>
             <p class="product-rating">( 4.5 / 338 )</p>
           </div>
-          <hr
-            class="border-b border-t-0 border-x-0 border-gray-600 mb-3"
-          />
+          <hr class="border-b border-t-0 border-x-0 border-gray-600 mb-3" />
           <p class="mb-2">$ <span class="product-price"> 109.7</span></p>
           <button
             class="product-add-to-cart-btn border border-gray-600 bg-gray-600 text-white w-full h-[38px] rounded text-sm active:scale-95 duration-200"
@@ -184,10 +191,26 @@
       <div class="cart-item">
         <img
           src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
-          class="cart-item-img h-[70px] -mb-[30px] ml-4"
+          class="cart-item-img h-[70px] -mb-[30px] ml-4 z-50 relative"
           alt=""
         />
-        <div class="cart-info border border-gray-600 rounded p-4">
+        <div class="cart-info z-10 border border-gray-600 rounded p-4 relative">
+          <button class="delBtn border px-5 py-1 rounded absolute top-2 right-4 border-red-600 bg-red-600 text-white active:scale-90 duration-200">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-3 pointer-events-none"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+              />
+            </svg>
+          </button>
           <p class="cart-item-title font-bold text-sm mt-[20px] line-clamp-1">
             Mens Casual Premium Slim Fit T-Shirts
           </p>
@@ -213,19 +236,18 @@
 
     <template id="starTemplate">
       <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      class="star size-4 fill-gray-600"
-    >
-      <path
-        fill-rule="evenodd"
-        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-        clip-rule="evenodd"
-      />
-    </svg>
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="star size-4 fill-gray-600"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+          clip-rule="evenodd"
+        />
+      </svg>
     </template>
-
 
     <script type="module" src="/main.js"></script>
     <script src="./node_modules/preline/dist/preline.js"></script>
